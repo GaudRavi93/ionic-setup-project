@@ -26,9 +26,9 @@
 @import "@ionic/angular/css/flex-utils.css";
 
 //specific scss(custom)
-@import "./app/styles/fonts.scss";
-@import "./app/styles/loader.scss";
-@import "./app/styles/primeng.scss";
+@import "./styles/fonts.scss";
+@import "./styles/loader.scss";
+@import "./styles/primeng.scss";
 
 ion-button{
     --box-shadow: none;
