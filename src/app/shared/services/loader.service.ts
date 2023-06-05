@@ -13,13 +13,14 @@ export class LoaderService {
     private loaderController: LoadingController,
   ) { }
 
+  // showLoader is not working because it's take html as string
   public async showLoader(message: string) {
     if (!this.isLoading) {
       this.isLoading = true;
       let loader = await this.loaderController.create({
         spinner: null,
         message: `
-       <img src="../../../../assets/icon/favicon.png">
+       <img src="../../../../assets/images/loader-logo.png">
        <div class="loader"></div>
        <p>${message}</p>
        `,

@@ -1,0 +1,11 @@
+# Credential
+
+    email    :- test@test.com
+    password :- Test@123
+
+# node, npm, ionic, angular versions
+
+    Node    :- v16.14.0
+    NPM     :- 8.3.1
+    ionic   :- 7.0.0
+    angular :- 16.0.0

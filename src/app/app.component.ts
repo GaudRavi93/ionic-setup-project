@@ -1,10 +1,9 @@
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
-import { SharedService } from './application/shared/shared.service';
+import { CommonService } from './shared/services/common.service';
 import { AuthService } from './application/auth/services/auth.service';
-import { LoginDetails } from './application/auth/interfaces/auth.interface';
-import { LoaderService } from './application/shared/services/loader.service';
+import { LoginDetails } from './application/auth/interfaces/LoginDetails';
 
 @Component({
   selector: 'app-root',
@@ -16,22 +15,26 @@ export class AppComponent {
     public router: Router,
     private platform: Platform,
     private authService: AuthService,
-    private sharedService: SharedService,
-    private loaderService: LoaderService,
+    private commonService: CommonService,
   ) {
     this.initializeApp();
   }
 
   private initializeApp() {
-    this.loaderService.showLoader('Verifying user');
     this.platform.ready().then(() => {
       this.checkIsUserValid();
     })
   }
 
+  /**
+   * auto login when "idToken" and "credential" is available and user is online.
+   * if user is offline then we can redirect to login page or do whatever you want.
+  */
   async checkIsUserValid() {
-    const user: LoginDetails = JSON.parse(localStorage.getItem('credential')!);
-    if (user && this.sharedService.isOnline) this.authService.initAutoLogin();
+    const isOnline: boolean = this.commonService.isOnline;
+    const idToken: string = localStorage.getItem('idToken');
+    const user: LoginDetails = JSON.parse(localStorage.getItem('credential'));
+    if (user && idToken && isOnline) this.authService.initAutoLogin(user);
     else this.router.navigate(['/login'], { replaceUrl: true });
   }
 }

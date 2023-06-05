@@ -1,5 +1,8 @@
 export const environment = {
   production: true,
+  hosts: [
+    { prefix: '/api', target: 'https://jsonplaceholder.typicode.com' },
+  ],
   firebaseConfig : {
     apiKey: "AIzaSyA27SwJLqfJRt14qeOiZ17CsjbeQCHFrdo",
     authDomain: "ionic-project-setup-7ee7a.firebaseapp.com",

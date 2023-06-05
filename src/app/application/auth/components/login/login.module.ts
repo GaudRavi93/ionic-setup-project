@@ -3,8 +3,8 @@ import { LoginPage } from './login.page';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from './../../../shared/shared.module';
 import { LoginPageRoutingModule } from './login-routing.module';
+import { SharedModule } from '../../../../shared/modules/shared.module';
 
 @NgModule({
   imports: [

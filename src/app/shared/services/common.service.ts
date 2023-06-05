@@ -4,7 +4,7 @@ import { ToastController } from '@ionic/angular';
 @Injectable({
   providedIn: 'root'
 })
-export class SharedService {
+export class CommonService {
   constructor(
     private toastCtrl: ToastController,
   ) { }

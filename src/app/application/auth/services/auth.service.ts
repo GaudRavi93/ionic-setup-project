@@ -1,9 +1,9 @@
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { SharedService } from '../../shared/shared.service';
+import { LoginDetails } from '../interfaces/LoginDetails';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { LoginDetails } from '../interfaces/auth.interface';
-import { LoaderService } from '../../shared/services/loader.service';
+import { CommonService } from '../../../shared/services/common.service';
+import { LoaderService } from '../../../shared/services/loader.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,30 +13,31 @@ export class AuthService {
   constructor(
     private router: Router,
     private fireAuth: AngularFireAuth,
-    private sharedService: SharedService,
+    private commonService: CommonService,
     private loaderService: LoaderService
   ) { }
 
   // login with email and password
   async login(details: LoginDetails) {
-    await this.loaderService.presentSpinner();
+    await this.loaderService.showLoader('Verifying user');
     this.fireAuth.signInWithEmailAndPassword(details.email, details.password)
-    .then(result => {
+    .then(async (result) => {
+      const idToken = await result.user.getIdToken();
+      localStorage.setItem('idToken', idToken);
       localStorage.setItem('credential', JSON.stringify(details));
-      this.loaderService.dismissSpinner();
+      this.loaderService.hideLoader();
       this.router.navigate(['/dashboard'], { replaceUrl: true });
     })
     .catch(error => {
       console.error(error);
-      this.loaderService.dismissSpinner();
-      this.sharedService.errorMessage('Incorrect username or password.');
+      this.loaderService.hideLoader();
+      this.commonService.errorMessage('Incorrect username or password.');
     });
   }
 
   // auto login with email and password
-  public initAutoLogin() {
-    const user: LoginDetails = JSON.parse(localStorage.getItem('credential')!);
-    if (user && this.sharedService.isOnline) this.login(user);
+  public initAutoLogin(user: LoginDetails) {
+    if (user) this.login(user);
     else this.router.navigate(['/login'], { replaceUrl: true });
   }
 

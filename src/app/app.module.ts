@@ -5,11 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire/compat';
 import { BrowserModule } from '@angular/platform-browser';
 import { environment } from './../environments/environment';
+import { SharedModule } from './shared/modules/shared.module';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-import { SharedModule } from './application/shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SideMenuComponent } from './application/shared/components/side-menu/side-menu.component';
+import { SideMenuComponent } from './shared/components/side-menu/side-menu.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,9 @@ import { SideMenuComponent } from './application/shared/components/side-menu/sid
     BrowserModule,
     AppRoutingModule,
     AngularFireAuthModule,
-    IonicModule.forRoot(),
+    IonicModule.forRoot({
+      innerHTMLTemplatesEnabled: true
+    }),
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
   ],

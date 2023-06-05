@@ -28,11 +28,7 @@
 //specific scss(custom)
 @import "./app/styles/fonts.scss";
 @import "./app/styles/loader.scss";
-
-// change primeNg input font family
-.p-component{
-    font-family: "robotoRegular" !important;
-}
+@import "./app/styles/primeng.scss";
 
 ion-button{
     --box-shadow: none;
