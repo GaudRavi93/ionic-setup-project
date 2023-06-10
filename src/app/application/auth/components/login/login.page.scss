@@ -19,7 +19,7 @@
 }
 
 .wrap-login100 {
-    font-family: "robotoRegular";
+    font-family: var(--font-regular);
     width: 390px;
     background: #fff;
     border-radius: 10px;
@@ -44,12 +44,12 @@
 }
 
 ion-button {
-    --background: #00a5a3;
+    --background: var(--ion-color-primary);
     height: 40px;
 }
 
 .create-account{
-    color: #00a5a3;
+    color: var(--ion-color-primary);
 }
 
 .passwordInput{
@@ -58,5 +58,5 @@ ion-button {
 }
 
 .dispPass{
-    color: #3880ff !important;
+    color: #000 !important;
 }

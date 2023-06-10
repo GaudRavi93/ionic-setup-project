@@ -47,7 +47,7 @@
     }
 }
 .loader-screen {
-    --background: #00b6b4;
+    --background: var(--ion-color-primary);
     .loader {
         width: 140px;
         height: 140px;

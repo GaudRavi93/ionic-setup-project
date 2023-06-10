@@ -18,7 +18,7 @@ ion-menu.md ion-list {
 ion-menu.md ion-header ion-list-header {
     line-height: 24px;
     font-size: 22px;
-    font-family: 'robotoMedium';
+    font-family: var(--font-medium);
     margin-top: 10px;
     min-height: 20px;
 }
@@ -54,7 +54,7 @@ ion-menu.md ion-item ion-icon {
 ion-menu.md ion-item ion-label,
 ion-menu.ios ion-item ion-label {
     font-size: 15px;
-    font-family: 'robotoMedium';
+    font-family: var(--font-medium);
     color: #616e7e;
 }
 

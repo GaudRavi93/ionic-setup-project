@@ -30,8 +30,16 @@
 @import "./styles/loader.scss";
 @import "./styles/primeng.scss";
 
+:root{
+    --ion-font-family: "robotoRegular";
+    --font-regular: "robotoRegular";
+    --font-medium: "robotoMedium";
+    --font-light: "robotoLight";
+    --font-bold: "robotoBold";
+}
+
 ion-button{
     --box-shadow: none;
     text-transform: none;
-    font-family: "robotoRegular" !important;
+    font-family: var(--font-regular) !important;
 }
