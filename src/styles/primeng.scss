@@ -1,0 +1,16 @@
+.p-component {
+    font-family: var(--font-regular) !important;
+}
+
+.p-inputtext {
+    padding: 12px !important;
+}
+
+.p-inputtext:enabled:hover {
+    border-color: var(--ion-color-primary) !important;
+}
+
+.p-inputtext:enabled:focus {
+    box-shadow: none !important;
+    border-color: var(--ion-color-primary) !important;
+}
