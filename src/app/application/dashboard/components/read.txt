@@ -1,0 +1,1 @@
+Only add dashboard page related components.
