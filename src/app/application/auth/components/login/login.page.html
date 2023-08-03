@@ -1,0 +1,56 @@
+<div class="main-div">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <div class="grid p-fluid">
+        <div class="col-12 md:col-4">
+          <div class="text-center fs-1 fw-bold">Welcome Back</div>
+          <div class="text-center fs-6 mb-3 login-label">
+            Login to continue to your account
+          </div>
+          <form [formGroup]="loginForm" (ngSubmit)="submitLoginForm(loginForm.value)">
+            <!-- email field -->
+            <div class="mb-3">
+              <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">
+                  <ion-icon name="mail-outline"></ion-icon>
+                </span>
+                <input type="text" formControlName="email" pInputText placeholder="Email Address">
+              </div>
+              <div class="text-danger" *ngIf="formSubmitted && 
+              (loginForm.get('email')?.hasError('required') || loginForm.get('email')?.hasError('email'))">
+                * Please enter valid email !
+              </div>
+            </div>
+
+            <!-- password input field -->
+            <div class="mb-3">
+              <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">
+                  <ion-icon name="lock-closed-outline"></ion-icon>
+                </span>
+                <span class="p-input-icon-right">
+                  <i class="pi pi-eye" *ngIf="!showPassword" (click)="togglePassword()"></i>
+                  <i class="pi pi-eye-slash dispPass" *ngIf="showPassword" (click)="togglePassword()"></i>
+                  <input [type]="showPassword ? 'text' : 'password'" formControlName="password"
+                    class="w-100 passwordInput" pInputText placeholder="Password">
+                </span>
+              </div>
+              <div class="text-danger" *ngIf="formSubmitted &&
+              (loginForm.get('password')?.hasError('required') || loginForm.get('password')?.value.length < 8)">
+                * Please enter 8 digit password !
+              </div>
+            </div>
+
+            <!-- forget password field -->
+            <div class="text-end text-danger mb-3">Forgot Password?</div>
+            <ion-button expand="full" class="mb-5" shape="round" type="submit">Log in</ion-button>
+          </form>
+
+          <!-- create new account field -->
+          <div class="text-center mb-1">Don't have an account?</div>
+          <div class="text-center fw-bold create-account" routerLink="/signup">Create account</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
